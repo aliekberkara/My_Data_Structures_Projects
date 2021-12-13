@@ -29,12 +29,12 @@ int main()
     }
     printf("\n---------------------------\n");
 
-	for(i = 0; i < number-1; i++){
-		for(j = 0; j < number-i-1; j++){
-			if(*(array+i) > *(array+i+1)){
-				temp = *(array+i);
-				*(array+i) = *(array+i+1);
-				*(array+i+1) = temp;
+	for(i = 0; i < (number-1); i++){
+		for(j = 0; j < (number-1-i); j++){
+			if(*(array+j) > *(array+j+1)){
+				temp = *(array+j);
+				*(array+j) = *(array+j+1);
+				*(array+j+1) = temp;
 			}
 		}
 	}
