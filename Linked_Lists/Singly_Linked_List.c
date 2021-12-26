@@ -19,7 +19,7 @@ struct Node* Create(int number){
 
 //------------------------------------------------------
 
-void AddToEnd(int number){
+void AddToLast(int number){
 	struct Node* add = Create(number);
 	if(first == NULL){
 		first = add;
@@ -67,6 +67,12 @@ void AddToFirst(int number){
 
 void AddBetween(int number, int position){
 	struct Node* add = Create(number);
+	int control = 0;
+
+	if(first == NULL && position > 0){
+		printf("\n------------------------------\nThere is no such sequence number\n------------------------------\n");
+		return;
+	}
 
 	if(position == 0){
 		AddToFirst(number);
@@ -78,21 +84,23 @@ void AddBetween(int number, int position){
 
 		while(temp != NULL){
 			if(counter == position-1){
+				control = 1;
 				break;
 			}
 			temp = temp->next;
 			counter++;
 		}
-		if(counter+1 != position){
+		if(control == 0){
 			printf("\n------------------------------\nThere is no such sequence number\n------------------------------\n");
 			return;
 		}
+
 		if(temp->next == NULL){
-			AddToEnd(number);
+			AddToLast(number);
 			return;
 		}
 
-		struct Node* tempNext = temp ->next;
+		struct Node* tempNext = temp->next;
 		temp->next = add;
 		add->next = tempNext;
 	}
@@ -100,7 +108,7 @@ void AddBetween(int number, int position){
 
 //------------------------------------------------------
 
-void DeleteFromEnd(){
+void DeleteFromLast(){
 	struct Node* temp = first;
 	if(first == NULL){
 		printf("\n------------------------------\nThere are no staff!");
@@ -136,11 +144,11 @@ void DeleteFromFirst(){
 
 void DeleteFromBetweenByPosition(int position){
 	struct Node* temp = first;
-	int counter = 0;
+	int counter = 0, control = 0;
 
 	if(first == NULL){
-	printf("\n------------------------------\nThere are no staff!");
-	return;
+		printf("\n------------------------------\nThere are no staff!");
+		return;
 	}
 
 	if(position == 0){
@@ -150,18 +158,19 @@ void DeleteFromBetweenByPosition(int position){
 
 	while(temp != NULL){
 		if(counter == position-1){
+			control = 1;
 			break;
 		}
 		temp = temp->next;
 		counter++;
 	}
-	if(counter+1 != position){
-		printf("\n------------------------------\nThere is no such sequence number\n------------------------------\n");
+	if(control == 0){
+		printf("\n------------------------------\nThere are no staff!\n------------------------------\n");
 		return;
 	}
-
 	if(temp->next == NULL){
-		temp->next = NULL;
+		printf("\n------------------------------\nThere are no staff!\n------------------------------\n");
+		return;
 	}
 
 	struct Node* temp1 = temp->next->next;
@@ -259,7 +268,7 @@ int main()
 		else if(choice == 2){
 			printf("Enter a number: ");
 			scanf("%d", &number);
-			AddToEnd(number);
+			AddToLast(number);
 		}
 		else if(choice == 3){
 			printf("Enter a number: ");
@@ -274,7 +283,7 @@ int main()
 			AddBetween(number, (position-1));
 		}
 		else if(choice == 5){
-			DeleteFromEnd();
+			DeleteFromLast();
 		}
 		else if(choice == 6){
 			DeleteFromFirst();
