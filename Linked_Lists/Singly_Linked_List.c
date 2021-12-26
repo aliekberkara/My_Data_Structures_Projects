@@ -190,7 +190,6 @@ void DeleteFromBetweenByElement(int element){
 
 	if(first->number == element){
 		DeleteFromFirst();
-		control = 1;
 		return;
 	}
 	struct Node* temp = first;
