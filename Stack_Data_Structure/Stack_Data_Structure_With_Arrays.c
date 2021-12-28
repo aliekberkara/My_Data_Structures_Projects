@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#define SIZE 10
 
-int size, array[10], top = -1;
+int array[SIZE], top = -1;
 
 //-----------------------------
 
 bool IsFull() {
-    if(top == size-1) {
+    if(top == SIZE-1) {
         return true;
     }
     return false;
@@ -64,8 +65,7 @@ void PrintStack() {
 
 int main() {
     int choice, number;
-    printf("Enter a number: ");
-    scanf("%d", &size);
+
     while(true) {
         printf("\n\n-------------MENU-------------\n\n0) Exit\n1) Print Stack\n2) Push\n3) Pop\n4) Peek\n\nChoose One: ");
         scanf("%d", &choice);
