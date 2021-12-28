@@ -67,7 +67,7 @@ int main() {
     printf("Enter a number: ");
     scanf("%d", &size);
     while(true) {
-        printf("\n\n------------------------\n0) Exit\n1) Print Stack\n2) Push\n3) Pop\n4) Peek\n\nChoose One: ");
+        printf("\n\n-------------MENU-------------\n\n0) Exit\n1) Print Stack\n2) Push\n3) Pop\n4) Peek\n\nChoose One: ");
         scanf("%d", &choice);
 
         if(choice == 0) {
